@@ -79,6 +79,34 @@ def main():
             sys.exit(1)
             
         list_tasks(tasks)
+    elif command == "update":
+        if len(sys.argv) < 4:
+            print("Usage: python task_cli.py update <task_id> <new_description>")
+            sys.exit(1)
+        elif len(sys.argv) > 4:
+            print("Usage: python task_cli.py update <task_id> <new_description>")
+            sys.exit(1)
+        try:
+            task_id = int(sys.argv[2])
+        except ValueError:
+            print("Error: task_id must be an integer.")
+            sys.exit(1)
+        description = sys.argv[3]
+        if not description.strip():
+            print("Error: New description cannot be empty.")
+            sys.exit(1)
+        task_found = False
+        for task in tasks:
+            if task["id"] == task_id:
+                task["description"] = description
+                task["updatedAt"] = datetime.now().isoformat()
+                task_found = True
+                break
+        if not task_found:
+            print(f"Error: Task with ID {task_id} not found.")
+            sys.exit(1)
+        save_tasks(tasks)
+        print(f"Task ID {task_id} updated successfully to description '{description}'")
     else:
         print(f"Unknown command: {command}")
         sys.exit(1)

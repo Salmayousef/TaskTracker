@@ -1,10 +1,10 @@
 [
     {
         "id": 1,
-        "description": "Buy groceries",
+        "description": "Buy groceries and cook food",
         "status": "todo",
         "createdAt": "2026-10-01T13:43:41.421070",
-        "updatedAt": "2026-10-01T13:43:41.421070"
+        "updatedAt": "2026-10-01T14:33:35.953170"
     },
     {
         "id": 2,
